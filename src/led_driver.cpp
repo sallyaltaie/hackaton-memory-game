@@ -1,4 +1,5 @@
 #include "../include/led_driver.hpp"
+#include "../include/millis.h"
 
 led_handle::led_handle(volatile uint8_t* ddr, volatile uint8_t* port, volatile uint8_t* pin_reg, uint8_t pin)
 : ddr(ddr), port(port), pin_reg(pin_reg), pin_mask(1 << pin)
