@@ -1,0 +1,11 @@
+[wokwi]
+version = 1
+firmware = "avrdemo.hex"
+gdbServerPort = 3333
+
+[serial]
+port = "/dev/cu.usbserial-0001"
+baud = 9600
+
+[gdb]
+port = 3333
