@@ -5,6 +5,7 @@
 
     void startup_light_sequence(led_handle* leds, int num_leds, uint16_t delay_ms);
     void correct_answer(led_handle* leds, int num_leds, uint16_t delay_ms);
+    void wrong_answer(led_handle * leds, int num_leds, uint16_t delay_ms);
     void new_game(led_handle * leds, int num_leds, uint16_t delay_ms);
 
 

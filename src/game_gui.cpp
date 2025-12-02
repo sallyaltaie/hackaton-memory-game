@@ -42,3 +42,18 @@ void correct_answer(led_handle * leds, int num_leds, uint16_t delay_ms) {
         }
 
     }
+
+    void wrong_answer(led_handle * leds, int num_leds, uint16_t delay_ms) {
+        {
+            uint32_t start = millis_get();
+            leds[1].turn_on();
+            leds[3].turn_on();
+            while (millis_get() - start < delay_ms)
+            {
+                // wait
+            }
+            leds[1].turn_off();
+            leds[3].turn_off();
+        }
+
+    }

@@ -2,3 +2,10 @@
 bin/*
 *.hex
 *.map
+/Makefile
+.Makefile
+/.vscode
+..vscode
+/c_cpp_properties.json
+/settings.json
+/wokwi.toml
