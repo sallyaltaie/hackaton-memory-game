@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "name": "memory_game",
+    "microcontroller": "atmega328p",
+    "firmware": "memory_game.hex",
+    "baudRate": 115200,
+    "connections": [
+      [ "uart0:rx", "PD1" ],
+      [ "uart0:tx", "PD0" ]
+    ],
+    "parts": [
+      {
+        "type": "wokwi-uart",
+        "id": "uart0",
+        "attrs": { "baud": 115200 }
+      }
+    ]
+  }

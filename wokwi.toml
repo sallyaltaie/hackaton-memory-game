@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'memory_game.hex'
+elf = 'memory_game.elf'
