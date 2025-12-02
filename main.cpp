@@ -9,6 +9,8 @@
 #include "include/random_seed.hpp"
 #include "include/game_gui.hpp"
 
+enum GameState {STARTUP, WAIT, CORRECT, WRONG, END};
+
 int main(void) {
     // Necessary to for counting time 
     sei(); 
@@ -24,32 +26,35 @@ led_handle leds[] = {
         led_handle(&DDRD, &PORTD, &PIND, PD5)
     };
 
-    // Play start sequence once.
-    while(1) {
-        startup_light_sequence(leds, 4, 800);
-        millis_wait_ms(1000);
-        correct_answer(leds, 4, 800);
-        break;
-        
-        // // Check if the buttons has been pressed - in that case toggle the led
-        // for (uint8_t i = 0; i < (sizeof(leds) / sizeof(leds[0])); i++) {
-        //     if (buttons[i].is_pressed()) leds[i].toggle();
-        // }
-        // // Exempel: blinka alla LEDs i sekvens
-        // for (uint8_t i = 0; i < (sizeof(leds) / sizeof(leds[0])); i++) {
-        //     leds[i].turn_on();
-        //     millis_wait_ms(200);
-        //     leds[i].turn_off();
-        // }
-        // millis_wait_ms(1000);
+    // Game result
 
-    //     leds[0].turn_on();
-    //     millis_wait_ms(1000);
-    //     leds[0].turn_off();
-    //     millis_wait_ms(1000);
-    // }
+    enum GameState { STARTUP, USER_INPUT, NEW_GAME, WAIT, CORRECT, END };
+    GameState state = USER_INPUT;
+    bool running = true;
+
+    while(running) {
+
+        switch(state) {
+            case STARTUP:
+                startup_light_sequence(leds, 4, 800);
+                millis_wait_ms(1000);
+                state = CORRECT;
+                break;
+            case NEW_GAME:
+                new_game(leds, 4, 400);
+                millis_wait_ms(1000);
+            case CORRECT:
+                correct_answer(leds, 4, 800);
+                state = END;
+                break;
+            case END:
+                running = false;
+                break;
+            case WAIT:
+                // Put the code for incoming input from player (luddes code)
+                break;
+        }
+    }
 
     return 0;
-}
-
 }
